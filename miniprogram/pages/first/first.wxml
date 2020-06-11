@@ -1,0 +1,10 @@
+<view class="container">
+<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/introduce.jpg" style="width:100%;height:100%"></image>
+  <view class="enter">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class=""
+    >微信快速登录</button>
+  </view>
+</view>

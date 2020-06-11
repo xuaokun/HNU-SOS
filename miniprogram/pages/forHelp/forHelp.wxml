@@ -1,0 +1,85 @@
+<view class="container">
+	<view class="task-info">
+		<form bindsubmit="formSubmit" bindreset="formReset">
+			<view class="row">
+				<text class="title">校区</text>
+				<view class="area-radio">
+					<picker name="campArea" value="{{index}}" range="{{campAreaName}}" bindchange="bindCampAreaChange">
+						<text>{{campAreaName[index]}}</text>
+					</picker>
+				</view>
+			</view>
+			<view class="row">
+				<text class="title">宿舍<text style="color:red">*</text></text>
+				<input class="area-radio" name="room" placeholder="1#101" maxlength="10" />
+			</view>
+			<view class="row">
+				<text class="title">联系方式<text style="color:red">*</text></text>
+				<input class="area-radio" name="contact" placeholder="如电话：123" maxlength="15" />
+			</view>
+			<view class="row">
+				<text class="title">男寝/女寝<text style="color:red">*</text></text>
+				<radio-group name="sex" class="area-radio">
+					<label>
+						<radio value="0" />男寝</label>
+					<label>
+						<radio value="1" />女寝</label>
+				</radio-group>
+			</view>
+			<view class="row">
+				<text class="title">快递地点<text style="color:red">*</text></text>
+				<input class="area-radio" name="area" placeholder="南门顺丰快递" maxlength="15" />
+			</view>
+			<view class="row">
+				<text class="title">快递大小</text>
+				<picker name="size" value="{{sizeIndex}}" range="{{expressSize}}" bindchange="bindSizeChange">
+					<view class="area-radio">
+						<text>当前选择：{{expressSize[sizeIndex]}}</text>
+					</view>
+				</picker>
+			</view>
+			<view class="row">
+				<text class="title">取送时间</text>
+				<picker mode="time" name="time" value="{{time}}" start="09:00" end="23:00" bindchange="bindTimeChange">
+					<view class="area-radio">
+						当前选择: {{time}}
+					</view>
+				</picker>
+			</view>
+			<view class="row textarea-row">
+				<!-- <text class="title"><text style="color:red">*</text> -->
+				<textarea class="text-area" placeholder="可将取件短信复制粘贴在此处*" name="textarea" bindinput="checkStringNum" />
+				</view>
+      <view class="row" >
+				<text class="title">悬赏奖品</text>
+				<!-- <input class="area-radio" name="reward" placeholder="我想送你一个小礼物~" /> -->
+				<picker name="reward" value="{{rewardindex}}" bindchange="bindRewardChange" range="{{rewards}}">
+					<view class="area-radio">
+						当前选择: {{rewards[rewardindex]}}
+					</view>
+				</picker>
+			</view>
+			<view class="row" wx:if="{{rewardindex == 0}}">
+				<text class="title">定义悬赏<text style="color:red">*</text></text>
+				<input class="area-radio" name="rewarddefine" placeholder="我想给你一个小奖励~" maxlength="15"/>
+			</view>
+			<view class="row" wx:if="{{rewardindex == 1}}">
+				<text class="title">金额设定<text style="color:red">*</text></text>
+				<input class="area-radio" name="rewarddefine" type="number" placeholder="请输入奖励金额~" maxlength="2"/>
+			</view>
+			<view class="upload-img">
+				<text class="title" style="color:#777">图片介绍</text>
+				<view class="img-list">
+					<block wx:for="{{tempFilePaths}}" wx:key="*this">
+							<image src="{{item}}" style="width:100rpx;height:100rpx;margin-left:40rpx;"></image>
+					</block>
+					<image class="img" src="/images/uploadImg.png" style="width:100rpx;height:100rpx;margin-left:40rpx;" bindtap="uploadImgHandle"></image>
+				</view>
+			</view>
+			  <view class="button">      
+					<button class="submit" formType="submit" size="default" hover-class="submit-hover">发布</button>
+					<button class="cancel" form-type="reset" size="default">清空</button>
+  			</view>
+			</form>
+	</view>
+</view>

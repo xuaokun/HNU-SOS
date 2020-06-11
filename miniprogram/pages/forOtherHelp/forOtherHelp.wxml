@@ -1,0 +1,87 @@
+<wxs src="../../wxs/arrIndexOf.wxs" module="toolArr" />
+<view class="container">
+	<view class="task-info">
+		<form bindsubmit="formSubmit" bindreset="formReset">
+			<!-- <view class="row">
+				<text class="title">校区</text>
+				<view class="row-content">
+					<picker name="campArea" value="{{index}}" range="{{campAreaName}}" bindchange="bindCampAreaChange">
+						<text>当前选择：{{campAreaName[index]}}</text>
+					</picker>
+				</view>
+			</view> -->
+      <view class="row" >
+				<text class="title">求助类别</text>
+				<picker name="sostype" value="{{sosTypeIndex}}" bindchange="bindSosTypeChange" range="{{sosType}}">
+					<view class="row-content">
+						当前选择: {{sosType[sosTypeIndex]}}
+					</view>
+				</picker>
+			</view>
+      <view class="row" wx:if="{{sosTypeIndex == 0}}">
+        <text class="title">自定义类别<text style="color:red">*</text></text>
+        <input class="row-content" name="selfdefine" placeholder="比如房子招租、求租" maxlength="10"/>
+      </view>
+      <view class="row">
+        <text class="title">求助标题<text style="color:red">*</text></text>
+        <input class="row-content" name="sostitle" placeholder="如美兰机场拼车~" maxlength="15"/>
+      </view>
+			<view class="row" wx:if="{{sosTypeIndex != 0}}">
+        <text class="title">内容标签</text>
+        <view class="row-content" name="contact" placeholder="如电话：123456789" maxlength="15">
+					<text wx:if="{{sosTypeIndex == 1}}" wx:for="{{carpooling}}" wx:key="*this" class="tip{{toolArr.indexOf(contentTip,item) != -1 ? ' content-text':''}}" catchtap="handleTip" data-tip="{{item}}">{{item}}</text>
+					<text wx:if="{{sosTypeIndex == 2}}" wx:for="{{jobType}}" wx:key="*this" class="tip{{toolArr.indexOf(contentTip,item) != -1 ? ' content-text':''}}" catchtap="handleTip" data-tip="{{item}}">{{item}}</text>
+					<text wx:if="{{sosTypeIndex == 3}}" wx:for="{{trading}}" wx:key="*this" class="tip{{toolArr.indexOf(contentTip,item) != -1 ? ' content-text':''}}" catchtap="handleTip" data-tip="{{item}}">{{item}}</text>
+					<text wx:if="{{sosTypeIndex == 4}}" wx:for="{{rent}}" wx:key="*this" class="tip{{toolArr.indexOf(contentTip,item) != -1 ? ' content-text':''}}" catchtap="handleTip" data-tip="{{item}}">{{item}}</text>
+				</view>
+      </view>
+			<view class="row" wx:if="{{sosTypeIndex == 1}}">
+        <text class="title">预估价格</text>
+        <input class="row-content" name="pricePre" placeholder="如每个人20元" maxlength="15"/>
+      </view>
+      <view class="row" wx:if="{{sosTypeIndex == 2}}">
+        <text class="title">兼职补贴</text>
+        <input class="row-content" name="pricePre" placeholder="如200元/天" maxlength="15"/>
+      </view>
+			<view class="row" wx:if="{{sosTypeIndex == 3}}">
+        <text class="title">商品价格</text>
+        <input class="row-content" name="pricePre" placeholder="如每本10元" maxlength="15"/>
+      </view>
+			<view class="row" wx:if="{{sosTypeIndex == 4}}">
+        <text class="title">房屋租金</text>
+        <input class="row-content" name="pricePre" placeholder="如1000元/月" maxlength="15"/>
+      </view>
+      <view class="row">
+        <text class="title">联系方式<text style="color:red">*</text></text>
+        <input class="row-content" name="contact" placeholder="如电话：123456789" maxlength="15"/>
+      </view>
+      <view class="row">
+        <text class="title">设定人数<text style="color:red">*</text></text>
+        <input type="number" class="row-content" name="personcount" placeholder="设定可以接受任务的人数" maxlength="2"/>
+      </view>
+      <view class="row" wx:if="{{sosTypeIndex == 0}}">
+        <text class="title">任务奖励</text>
+        <input class="row-content" name="reward" placeholder="完成任务可获得" maxlength="15"/>
+      </view>
+      <view class="row">
+        <text class="title">求助详情</text>
+        <textarea class="row-content text-area" placeholder="请将您的求助内容详细描述在这里" name="sosdetail" />
+      </view>
+			<view class="row">
+				<view class="title">
+					<image class="img" src="/images/uploadImg.png" style="width:64rpx;height:64rpx;" bindtap="uploadImgHandle"></image>
+				</view>
+				<view class="img-list">
+          <text>点击左边小图标添加图片描述~</text>
+					<block wx:for="{{tempFilePaths}}" wx:key="*this">
+							<image src="{{item}}" style="width:100rpx;height:100rpx;margin-left:40rpx;"></image>
+					</block>
+				</view>
+			</view>
+			  <view class="button">      
+					<button class="submit" formType="submit" size="default" hover-class="submit-hover">发布</button>
+					<button class="cancel" form-type="reset" size="default">清空</button>
+  			</view>
+			</form>
+	</view>
+</view>

@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="login">
+    <view 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      size="default"
+    ><image src="{{avatarUrl}}" style="width:100rpx;height:100rpx;border-radius:50%"></image></view>
+		<text catchtap="gotoLogin" wx:if="{{!logged}}">登录/注册 ></text>
+		<text wx:else>{{nickName}}，您好</text> 
+  </view>
+
+	<view class="forHelp">
+		<text class="title">我的求助</text>
+		<view class="section">
+			<view class="order" bindtap="myNotHelpedTasksHandle">
+				<view class="img">
+					<image src="/images/daijiedan.png" class="img"></image>
+				</view>
+				<text class="order-title">待接单</text>
+			</view>
+			<view class="order" bindtap="myIsHelpingTasksHandle">
+				<view class="img">
+					<image src="/images/icon20.png" class="img"></image>
+				</view>
+				<text class="order-title">进行中</text>
+			</view>
+			<view class="order" bindtap="myHelpedTasksHandle">
+				<view class="img">
+					<image src="/images/yiwanchengdingdan.png" class="img"></image>
+				</view>
+				<text class="order-title">已完成</text>
+			</view>
+		</view>
+	</view>
+	<view class="helpOthers">
+		<text class="title">我的任务</text>
+		<view class="section">
+			<view class="order" bindtap="toMyHelping">
+				<view class="img">
+					<image src="/images/yijiedan.png" class="img"></image>
+				</view>
+				<text class="order-title">已接单</text>
+			</view>
+			<view class="order" bindtap="toMyHelped">
+				<view class="img">
+					<image src="/images/yiwanchengdingdan.png" class="img"></image>
+				</view>
+				<text class="order-title">已完成</text>
+			</view>
+			<!-- <view class="order" bindtap="Toerror">
+				<view class="img">
+					<image src="/images/yonghupingjia.png" class="img"></image>
+				</view>
+				<text class="order-title">用户评价</text>
+			</view> -->
+		</view>
+	</view>
+	<view class="options">
+		<!-- <view class="option" bindtap="Toerror">
+			<image src="/images/zhengshu.png" style="width:64rpx;height:64rpx;margin-left:20rpx"></image>
+			<text style="margin-left:40rpx">实名认证</text>
+		</view> -->
+		<view class="option1">
+			<image src="/images/fankui.png" style="width:64rpx;height:64rpx;margin-left:20rpx"></image>
+			<text style="margin-left:40rpx">联系我们</text>
+			<button open-type="contact" hover-class="none" bindcontact="handleContact" style="width: 650rpx;height: 50px;position: absolute;top:0;left:0;"></button>
+		</view>
+		<!-- <view class="option2"  bindtap="Toerror">
+			<image src="/images/zu131.png" style="width:64rpx;height:64rpx;margin-left:20rpx"></image>
+			<text style="margin-left:40rpx">使用帮助</text>
+		</view> -->
+	</view>
+	<!-- <view class="row" bindtap="Toerror">实名认证</view>
+	<view class="row" bindtap="Toerror">问题反馈</view>
+	<view class="row">
+		<text>联系我们</text>
+		<button open-type="contact" bindcontact="handleContact" style="width: 750rpx;height: 30px;line-height: 30px;position: absolute;top:0;left:0;"></button>
+	</view> -->
+</view>

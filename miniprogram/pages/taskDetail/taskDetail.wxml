@@ -1,0 +1,86 @@
+<view class="container">
+	<view class="title">
+		<!-- list[""0""].taskInfo[""0""].sostype -->
+		<text class="titleText">{{sostitle}}</text>
+		<view class="time">发布时间：{{time}}</view>
+	</view>
+	<view class="content">
+		<view class="row">
+			<text class="left">类别标签</text>
+			<view class="right">{{selfdefine == '' ? sostype:selfdefine}}</view>
+		</view>
+		<view class="row" wx:if="{{contentTip[0]}}">
+			<text class="left">内容标签</text>
+			<view class="right"><text wx:for="{{contentTip}}" wx:for-item="tip">{{tip}}</text></view>
+		</view>
+		<view class="row" wx:if="{{sostype == '拼车' && pricePre != ''}}">
+			<text class="left">预估价格</text>
+			<view class="right">{{pricePre}}</view>
+		</view>
+		<view class="row" wx:if="{{sostype == '兼职' && pricePre != ''}}">
+			<text class="left">兼职补贴</text>
+			<view class="right">{{pricePre}}</view>
+		</view>
+		<view class="row" wx:if="{{sostype == '二手交易' && pricePre != ''}}">
+			<text class="left">商品价格</text>
+			<view class="right">{{pricePre}}</view>
+		</view>
+		<view class="row" wx:if="{{sostype == '房屋租赁' && pricePre}}">
+			<text class="left">房屋租金</text>
+			<view class="right">{{pricePre}}</view>
+		</view>
+		<view class="row" wx:if="{{imgList[0]}}">
+			<text class="left">图片介绍</text>
+			<view class="right">
+				<block wx:for="{{imgList}}" wx:for-index="iid" wx:for-item="iitem" wx:key="*this">
+					<image src="{{iitem}}" data-currentimg="{{iitem}}" style="width:150rpx;height:150rpx;margin-right:10rpx;margin-top:10rpx" catchtap="watchImg" data-currentimg="{{iitem}}" data-imglist="{{imgList}}"></image>
+				</block>
+			</view>
+		</view>
+		<view class="row" wx:if="{{detail != ''}}">
+			<text class="left">详情描述</text>
+			<view class="right">{{detail}}</view>
+		</view>
+		<view class="row">
+			<text class="left">联系方式</text>
+			<view class="right">{{contact}}</view>
+			<view class="copy-btn" catchtap="copyContact">
+				<image src="/images/copy.png" style="width:64rpx;height:64rpx;margin-top:8rpx"></image>
+			</view>
+		</view>
+		<view class="row">
+			<text class="left">所需人数</text>
+			<view class="right">{{personcount}}</view>
+		</view>
+		<view class="row" wx:if="{{sostypr == '自定义' && reward != ''}}">
+			<text class="left">奖励内容</text>
+			<view class="right">{{reward}}</view>
+		</view>
+		<view class="row" wx:if="{{contact == '***'}}">
+			<text class="left">注意事项</text>
+			<view class="right">领取任务后您可以查看对方的联系方式</view>
+		</view>
+
+		<view class="discuss-area">
+			<block wx:for="{{task}}" wx:key="_id">
+				<view class="one-comment">
+					<view class="avatar" style="background-image: url({{item.userInfo[0].userInfo.avatarUrl ? item.userInfo[0].userInfo.avatarUrl : '/images/me1.png'}})"></view>
+					<view class="taskinfo">
+						<view class="nickname">{{item.userInfo[0].userInfo.nickName ? item.userInfo[0].userInfo.nickName : '匿名' }}</view>
+						<text>{{item.content}}</text>
+						<text class="time">{{item.time}}</text>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view class="white"></view>
+		<view class="ask">
+			<form bindsubmit="formSubmit">
+				<textarea name='asktext' bindinput="changeOpacity" class="ask-text" value="{{commentText}}" placeholder="写评论..." bindblur="blurChange" adjust-position="true" cursor-spacing='120rpx' fixed="true" show-confirm-bar=''></textarea>
+				<view class="button">
+					<button class="submit" formType="submit" style="opacity:{{askOpacity}};">发送</button>
+				</view>
+			</form>
+		</view>
+	</view>
+</view>

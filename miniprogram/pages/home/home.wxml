@@ -1,0 +1,66 @@
+<view class="container">
+	<view class="ad">
+		<swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+			<block wx:for="{{ads}}" wx:key="*this">
+				<swiper-item>
+					<image src="{{item}}" style="width:700rpx;height:300rpx;border-radius:20rpx"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="title-btn">
+			<view class="title">
+				<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/771042844446704999.jpg" style="width:300rpx;height:60rpx;border-radius:10rpx"></image>
+			<picker class="camp-picker" range="{{campAreaName}}" bindchange="bindCampAreaChange">
+				<text>{{campAreaName[campArea]}}</text>
+			</picker>
+		</view>
+		<view class="btn">
+			<view class="btn-left" bindtap="toForHelp">
+				<text class="btn-text">快递代领悬赏</text>
+				<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/772086730837351466.jpg" style="width:300rpx;height:60rpx;border-radius:10rpx;"></image>
+				<!-- <image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/submit1.jpg" style="width:300rpx;height:60rpx;border-radius:40rpx;"></image> -->
+			</view>
+	</view>
+
+		<!-- <view class="btn-right" bindtap="toForOtherHelp">
+			<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/submit2.jpg" style="width:300rpx;height:60rpx;border-radius:40rpx;"></image>
+		</view> -->
+	</view>
+	<view class="task-list">
+		<block wx:for="{{currentTasks}}" wx:key="_id">
+		<!-- {{bgdColor[index%5]}} -->
+			<view wx:if="{{item.status == 0}}" class="task" style="background:#fff;" data-time="{{item.time}}">
+				<view class="avatar" style="background-image: url({{item.user[0].userInfo.avatarUrl ? item.user[0].userInfo.avatarUrl : '/images/me1.png'}})"></view>
+				<view class="taskinfo">
+					<view class="nickname">{{item.user[0].userInfo.nickName ? item.user[0].userInfo.nickName : '匿名' }}<text wx:if="{{item.sex == 0}}" style="color:green">  ♂</text><text wx:if="{{item.sex == 1}}" style="color:red">  ♀</text></view>
+					<text>{{item.where}}>>{{item.room}}</text>
+					<view class="help" bindtap="helpFunc" data-content="{{item.where+'送至'+item.room}}" data-taskid="{{item._id}}" data-index="{{index}}" data-itemopenid="{{item._openid}}" data-imglist="{{item.imgList}}">{{item._openid == openid ? '取消任务':'我来帮领'}}</view>
+					<view class="content">快递类型：{{item.size}}</view>
+					<view class="content">希望送达时间：{{item.endingTime}}</view>
+					<!-- <view class="content">奖励类型：{{item.reward}}</view> -->
+					<view class="content" wx:if="{{item.rewarddefine}}">奖励内容：{{item.reward == '现金奖励' ? item.rewarddefine + '元' : item.rewarddefine}}</view>
+					<view class="img-list">
+						<block wx:for="{{item.imgList}}" wx:for-index="iid" wx:for-item="iitem" wx:key="*this">
+							<image src="{{iitem}}" hover-stop-propagation="true" data-currentimg="{{iitem}}" style="width:100rpx;height:100rpx;margin-right:10rpx;" catchtap="watchImg" data-imglist="{{item.imgList}}"></image>
+						</block>
+					</view>
+					<view class="time">{{item.time}}</view>
+				</view>
+			</view>
+		</block>
+		<!-- <view class="loading" wx:if="{{loadMore}}">正在载入更多...</view> -->
+		<view class="loadAll" wx:if="{{loadAll}}">
+		<image src="/images/nomore1.png" style="width:128rpx;height:128rpx"></image>
+		</view>
+	</view>
+	<view class="my-task" bindtap="toMyHelping">
+	<image src="/images/mytasks1.png" style="width:50rpx;height:50rpx;"></image>
+	<!-- <text>我的任务</text> -->
+	</view>
+	<!-- <movable-area>
+	<movable-view class="move-btn" direction="all">
+		<image src="/images/addTask.png" style="width:100rpx;height:100rpx" catchtap="toForHelp"></image>
+	</movable-view>
+	</movable-area> -->
+</view>

@@ -1,0 +1,82 @@
+page{
+  /* background-color: #eee; */
+}
+
+.task-info{
+  /* background-color: #fff; */
+  width: 750rpx;
+}
+.row{
+  width: 750rpx;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  color: #777;
+}
+.title{
+  width: 180rpx;
+  float: left;
+  padding-left: 20rpx;
+}
+.area-radio{
+  width: 550rpx;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  color: #000;
+}
+.reward-input{
+  margin-bottom: 20rpx;
+}
+.textarea-row{
+  height: 200px;
+}
+.text-area{
+  height: 200px;
+  width: 730rpx;
+  padding-left: 20rpx;
+}
+.button{
+  width: 100%;
+  text-align: center;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.submit{
+  width: 200rpx;
+  height: 40px;
+  margin-top: 20rpx;
+  color: #fff;
+  background-color: #f00;
+}
+.submit[size]{
+  width: 200rpx;
+}
+.submit-hover{
+  opacity: 0.5;
+}
+.cancel{
+  width: 200rpx;
+  height: 40px;
+  margin-top: 20rpx;
+  opacity: 0.5;
+  background-color: #ccc;
+}
+.cancel[size]{
+  width: 200rpx;
+}
+.upload-img{
+}
+/* .img{
+  margin-left: 50rpx;
+} */
+.img-list{
+  float: left;
+  padding: 20rpx;
+  width: 710rpx;
+  min-height: 100rpx;
+  border-bottom: 1px solid #ccc;
+  overflow: visible;
+}

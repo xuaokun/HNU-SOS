@@ -1,0 +1,45 @@
+<view class="container">
+<view class="task-list">
+    <text wx:if="{{tasks.length == 0}}">当前任务为空哦~</text>
+		<block wx:for="{{tasks}}" wx:key="_id">
+			<view class="task" style="background-color:#fff;" bindtap="messageDetailHandle" data-index="{{index}}">
+				<view class="avatar" style="background-image: url({{item.user[0].userInfo.avatarUrl ? item.user[0].userInfo.avatarUrl : '/images/me1.png'}})"></view>
+				<view class="taskinfo">
+					<view class="task-detail{{index == currentId?' detail-active':''}}"></view>
+						<view class="task-over" wx:if="{{item.status == 2}}">
+						<image src="{{item.personcount == 0 ? '/images/over1.png':'/images/notGoOn.png'}}" style="width:128rpx;height:128rpx"></image>
+						</view>
+					<view class="nickname">{{item.user[0].userInfo.nickName ? item.user[0].userInfo.nickName : '匿名' }}</view>
+					<view wx:if="{{item.type == 0}}">
+						<view class="nickname">#快递代领  {{item.status == 0 ? '待帮助':(item.status == 1 ? '进行中':'已完成')}}</view>
+						<view>{{item.where}} 送至 {{item.room}}</view>
+						<view wx:if="{{index == currentId}}">
+							<view>取件信息：{{item.expressInfo}}</view>
+							<view>联系方式：{{item.contact}}</view>
+							<view>任务奖励：{{item.reward == '现金奖励' ? item.rewarddefine + '元' : item.rewarddefine}}</view>
+							<view class="content">希望送达时间：{{item.endingTime}}</view>
+						</view>
+          </view>
+					<view wx:if="{{item.type == 1}}">
+						<view class="nickname">#其他求助  {{item.status == 0 ? '待帮助':(item.status == 1 ? '进行中':'已完成')}}</view>
+						<view>{{item.sostitle}}</view>
+						<view wx:if="{{index == currentId}}">
+							<view>类别标签：#{{item.selfdefine?item.selfdefine:item.sostype}}</view>
+							<view>内容描述：{{item.detail}}</view>
+							<!-- <view>所需人数：{{item.personcount}}</view> -->
+							<view>联系方式：{{item.contact}}</view>
+							<view>任务奖励：{{item.reward}}</view>
+							<view wx:if="{{status == 0}}" class="oversend" bindtap="cancelTask" data-taskid="{{item._id}}">取消求助</view>
+						</view>
+					</view>
+					<view class="img-list" wx:if="{{index == currentId}}">
+						<block wx:for="{{item.imgList}}" wx:for-index="iid" wx:for-item="iitem" wx:key="*this">
+							<image src="{{iitem}}" style="width:100rpx;height:100rpx;margin-right:10rpx;" catchtap="watchImg" data-imglist="{{item.imgList}}"></image>
+						</block>
+					</view>  
+					<view class="time">{{item.time}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>

@@ -1,0 +1,157 @@
+Page{
+  margin: 0;
+  padding: 0;
+  /* background-color: #eeeeee; */
+  width: 100%;
+  height: 100%;
+}
+.ad{
+  width: 700rpx;
+  height: 300rpx;
+  margin: 20rpx auto;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.title{
+  width: 300rpx;
+  /* margin: 0 auto; */
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  /* border-radius: 30rpx; */
+  /* background-color: #fff; */
+  /* float: left; */
+  /* left: 20rpx; */
+  position: relative
+}
+.camp-picker{
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  font-size: large;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.task-list{
+}
+.task{
+  width:640rpx;
+  /* height: 150rpx; */
+  overflow: auto;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
+  position: relative;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.3);
+}
+/* .task:active{
+  opacity: 0.1;
+} */
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-size: cover;
+  float: left;
+}
+.nickname{
+  color: #2590fe;
+}
+.taskinfo{
+  margin-left: 20rpx;
+  width: 380rpx;
+  float: left;
+
+}
+.help{
+  position: absolute;
+  color: #f00;
+  bottom: 10rpx;
+  right: 20rpx;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  padding: 3rpx;
+  border: 1px solid #f00;
+}
+.help:hover{
+  
+}
+.reward{
+  position: absolute;
+  bottom: 30rpx;
+  right: 30rpx;
+  border: 1px solid #000;
+  padding: 3rpx;
+  border-radius: 20rpx;
+}
+
+.time{
+  font-size: small;
+  opacity: 0.7;
+  margin-top: 10rpx;
+}
+.img-list{
+  width: 350rpx;
+}
+.loadAll{
+  /* width: 128rpx;
+  height: 128rpx; */
+  text-align: center;
+  margin: 20rpx auto;
+}
+.btn{
+  width: 300rpx;
+  position: relative;
+  height: 60rpx;
+  float: right;
+}
+.btn-text{
+  position: absolute;
+  color: #fff;
+  font-size: large;
+  text-align: center;
+  line-height: 60rpx;
+  left: 0rpx;
+  right: 0; 
+}
+.title-btn{
+  width: 750rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: space-around;
+  /* overflow: auto; */
+}
+movable-area{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+.move-btn{
+  width: 100rpx;
+  height: 100rpx;
+  z-index: 99;
+  /* left: 650rpx;
+  top: 420rpx; */
+  /* background-color: #0f0; */
+  position: fixed;
+}
+.my-task{
+  position: fixed;
+  bottom: 50rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-task text{
+  display: block;
+}

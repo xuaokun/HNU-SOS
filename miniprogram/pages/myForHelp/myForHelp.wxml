@@ -1,0 +1,59 @@
+<view class="container">
+<view class="title">
+	<text wx:for="{{statusList}}" class="status-item{{status == index ? ' active':''}}" wx:key="*this" bindtap="selectStatus" data-status="{{index}}">{{item}}</text>
+</view>
+	<view class="task-list">
+		<view wx:if="{{tasks.length == 0}}">
+			<image src="/images/noorder.png" style="width:128rpx;height:128rpx;margin-top:50rpx"></image>
+		</view>
+		<block wx:for="{{tasks}}" wx:key="_id">
+			<view class="task" bindtap="messageDetailHandle" data-index="{{index}}">
+				<!-- <view class="avatar" style="background-image: url({{avatarUrl}})"></view> -->
+				<view class="taskinfo">
+					<view class="task-detail{{index == currentId?' detail-active':''}}"></view>
+					<view class="task-over" wx:if="{{item.status == 2}}">
+					<image src="{{item.personcount == 0 ? '/images/over1.png':'/images/notGoOn.png'}}" style="width:128rpx;height:128rpx"></image>
+					</view>
+					<!-- <view class="nickname">{{nickName }}</view> -->
+					
+					<view wx:if="{{item.type == 0}}">
+						<view class="task-name">{{item.where}} 送至 {{item.room}}
+							<text style="font-size:small;color:red;float:right;">{{item.status == 0 ? '待帮助':(item.status == 1 ? '进行中':'已完成')}}</text>
+						</view>
+						<view class="nickname" wx:if="{{status == 1}}">{{item.user[0].name}}正在帮领，如有问题请电联：{{item.user[0].phoneNumber}}</view>
+					
+						<!-- <view style="font-size:small;">{{item.where}} 送至 {{item.room}}</view> -->
+						<view wx:if="{{index == currentId}}" class="detail">
+							<view>取件信息：{{item.expressInfo}}</view>
+							<view>任务奖励：{{item.reward == '现金奖励' ? item.rewarddefine + '元' : item.rewarddefine}}</view>
+							<view class="content">希望送达时间：{{item.endingTime}}</view>
+							<view wx:if="{{status == 0}}" class="oversend" bindtap="cancelTask" data-taskid="{{item._id}}">取消求助</view>
+							<view wx:if="{{status == 1}}" class="oversend" bindtap="overSendFunc" data-taskid="{{item._id}}">确认送达</view>
+						</view>
+					</view>
+					<view wx:if="{{item.type == 1}}">
+						<view class="task-name" catchtap="goToDetail" data-item='{{item}}'>{{item.sostitle}} >
+							<text style="font-size:small;color:red;margin-left:50rpx;float:right;">{{item.status == 0 ? '待帮助':(item.status == 1 ? '进行中':'已完成')}}</text>
+						</view>
+						<view wx:if="{{index == currentId}}" class="detail">
+							<view>类别标签：#{{item.selfdefine?item.selfdefine:item.sostype}}</view>
+							<view>内容描述：{{item.detail}}</view>
+							<view>任务所需人数：{{item.totalcount}}</view>
+							<view>目前仍需人数：{{item.personcount}}</view>
+							<view>我的联系方式：{{item.contact}}</view>
+							<view>任务奖励：{{item.reward}}</view>
+							<view wx:if="{{status == 0}}" class="oversend" bindtap="cancelTask" data-taskid="{{item._id}}">取消求助</view>
+							<view wx:if="{{status == 1}}" class="oversend" bindtap="overSendFunc" data-taskid="{{item._id}}">任务结束</view>
+						</view>
+					</view>
+					<view class="img-list" wx:if="{{index == currentId}}">
+						<block wx:for="{{item.imgList}}" wx:for-index="iid" wx:for-item="iitem" wx:key="*this">
+							<image src="{{iitem}}" data-currentimg="{{iitem}}" style="width:100rpx;height:100rpx;margin-right:10rpx;" bindtap="watchImg" data-imglist="{{item.imgList}}"></image>
+						</block>
+					</view>
+					<view class="time">{{item.time}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>

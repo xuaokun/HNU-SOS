@@ -1,0 +1,106 @@
+/* miniprogram/pages/me/me.wxss */
+page{
+  /* width: 100%;
+  height: 100%; */
+  /* background-color: #f3f5fa; */
+}
+.container{
+  /* width: 100%;
+  height: 100%; */
+}
+.login{
+  display: flex;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+}
+.userinfo-avatar[size] {
+  width: 100rpx;
+}
+
+.forHelp{
+  width: 700rpx;
+  height: 100px;
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.options{
+  width: 700rpx;
+  /* height: 150px; */
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.option,.option1{
+  margin: 0 auto;
+  width: 649rpx;
+  /* background-color: lightgreen; */
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.option1{
+  position: relative;
+}
+.option2{
+  margin: 0 auto;
+  width: 650rpx;
+  /* background-color: lightgreen; */
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.title{
+  display: block;
+  height: 30px;
+  margin-left: 20rpx;
+  margin-top: 5px;
+}
+.section{
+  height: 70px;
+  padding-bottom: 5px;
+}
+.order{
+  float: left;
+  width: 200rpx;
+  height: 70px;
+  margin-left: 20rpx;
+}
+.img{
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+.order-title{
+  display: block;
+  text-align: center;
+}
+.helpOthers{
+  width: 700rpx;
+  height: 100px;
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.row{
+  width: 750rpx;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 20rpx;
+  background-color: floralwhite;
+  border-radius: 5px;
+  position: relative;
+}

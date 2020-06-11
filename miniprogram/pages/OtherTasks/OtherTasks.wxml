@@ -1,0 +1,145 @@
+<view class="container">
+	<!-- <view class="title">
+		<picker range="{{campAreaName}}" bindchange="bindCampAreaChange">
+			<text>{{campAreaName[campArea]}}</text>
+		</picker>
+	</view> -->
+
+	<view class="sos-type">
+		<view class="typeRow">
+			<text wx:for="{{sosTypeRange}}" class="type-item{{currentType == index ? ' active':''}}" wx:key="*this" bindtap="handleType" data-index="{{index}}">{{item}}</text>
+		</view>
+	</view>
+		<view class="search">
+		<form bindsubmit="searchWord">
+			<input name="word" type="text" placeholder="请根据其他类别标签进行搜索..." maxlength="10"></input>
+			<button formType="submit">搜索</button>
+		</form>
+	</view>
+	<!-- <view class="title-btn">
+		<view class="title">
+			<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/771042844446704999.jpg" style="width:375rpx;height:75rpx;border-radius:40rpx;" class="title-bg"></image>
+			<picker class="camp-picker" range="{{campAreaName}}" bindchange="bindCampAreaChange">
+				<text>{{campAreaName[campArea]}}</text>
+			</picker>
+		</view>
+		<view class="btn">
+			<view class="btn-left" bindtap="toForOtherHelp">
+				<text class="btn-text">发布求助任务</text>
+				<image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/772086730837351466.jpg" style="width:375rpx;height:75rpx;border-radius:40rpx;"></image>
+			</view>
+		</view>
+	</view> -->
+	<view class="forhelp-btn" catchtap="toForOtherHelp">
+		<text>发布求助</text>
+	</view>
+	<view class="hot-task">
+		<view class="hot-title">
+			<image src="/images/hot.png" style="width:64rpx;height:64rpx">火苗</image>
+			<text>每日热门</text>
+		</view>
+		<view class="hot-content">
+			<swiper autoplay="true" vertical="true" interval="3000" duration="500" style="height:100rpx">
+				<block wx:for="{{hot}}" wx:key="*this">
+					<swiper-item>
+						<image src="{{item.imgList[0] ? item.imgList[0] : '/images/noImg.png'}}" style="width:100rpx;height:100rpx;border-radius:20rpx;float:left"></image>
+						<view class="hot-right">
+							<text class="hot-right-title">{{item.sostitle}}</text>
+							<text class="hot-right-title">所需人员数目:{{item.totalcount}}</text>
+							<text class="hot-right-title">类别:{{item.selfdefine?item.selfdefine:item.sostype}}</text>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+	</view>
+	<view class="task-list">
+		<block wx:for="{{currentTasks}}" wx:key="_id">
+			<view class="task" bindtap="toDetail" data-item="{{item}}">
+				<view class="task-over" wx:if="{{item.personcount == 0}}">
+					<image src="/images/over1.png" style="width:128rpx;height:128rpx"></image>
+				</view>
+				<view class="avatar" style="background-image: url({{item.user[0].userInfo.avatarUrl ? item.user[0].userInfo.avatarUrl : '/images/me1.png'}})"></view>
+				<view class="taskinfo">
+					<view class="nickname">{{item.user[0].userInfo.nickName ? item.user[0].userInfo.nickName : '匿名' }}</view>
+					<text>{{item.sostitle}}</text>
+					<!-- <view class="help" bindtap="helpFunc" data-taskid="{{item._id}}" data-itemopenid="{{item._openid}}" data-imglist="{{item.imgList}}">{{item._openid == openid ? '取消任务':'接收任务'}}</view> -->
+					<!-- <view class="content">奖励类型：{{item.reward}}</view> -->
+					
+					<view class="personcount">
+						<text class="content-tip" style="color:lightskyblue" wx:for="{{item.contentTip}}"  wx:for-item="tip" wx:key="*this">{{tip}}</text>
+					</view>
+					<view class="personcount">任务剩余量：{{item.personcount}}人</view>
+					<view class="img-list">
+						<block wx:for="{{item.imgList}}" wx:for-index="iid" wx:for-item="iitem" wx:key="*this">
+							<image src="{{iitem}}" hover-stop-propagation="true" data-currentimg="{{iitem}}" style="width:100rpx;height:100rpx;margin-right:10rpx;" catchtap="watchImg" data-imglist="{{item.imgList}}"></image>
+						</block>
+					</view>
+					<view class="personcount">
+						<text style="color:#2590fe;float:left;display:block;">#{{item.selfdefine?item.selfdefine:item.sostype}}</text>
+					</view>
+					<view class="time">
+						<text>{{item.time}}</text>
+						<view class="funcions" wx:if="{{showFunctions && index == itemIndex}}">
+							<view class="function" catchtap="loveItem" data-taskid="{{item._id}}">
+								<image src="/images/love1.png" style="width:32rpx;height:32rpx;"></image>
+								<text>赞</text>
+							</view>
+							<view class="function" catchtap="commentItem" data-taskid="{{item._id}}">
+								<image src="/images/comment1.png" style="width:32rpx;height:32rpx;"></image>
+								<text>评论</text>
+							</view>
+							<view class="function" catchtap="helpItem" data-taskopenid="{{item._openid}}" data-taskid="{{item._id}}">
+								<image src="/images/help1.png" style="width:32rpx;height:32rpx;"></image>
+								<text>接受</text>
+							</view>
+							<!-- <image src="/images/love1.png" style="width:32rpx;height:32rpx;margin-left:16rpx;float:left"></image>
+									</view>
+									<text style="float:left;width:72rpx;text-align:center">赞</text> -->
+							<!-- <view class="img">	<view class="comment" catchtap="commentItem">
+										
+										<image src="/images/comment1.png" style="width:32rpx;height:32rpx;margin-left:16rpx;float:left"></image>
+									</view>
+									<text style="float:left;width:72rpx;text-align:center">评论</text>
+								</view>
+								<view class="help" catchtap="helpItem">
+									<view class="img">
+										<image src="/images/help1.png" style="width:32rpx;height:32rpx;margin-left:16rpx;float:left"></image>
+									</view>
+									<text style="float:left;width:72rpx;text-align:center">接受</text>
+								</view> -->
+						</view>
+						<view class="more" catchtap="showFunction" data-index="{{index}}" data-taskid="{{item._id}}">
+							<image src="/images/more2.png" style="width:32rpx;height:32rpx;"></image>
+						</view>
+					</view>
+					<view class="love" wx:if="{{item.loveList.length > 0}}">
+						<image src="/images/love2.png" style="width:32rpx;height:32rpx;"></image>
+						<text style="font-size:small">{{item.loveList.length}}人觉得很赞</text>
+					</view>
+					<view class="comment-area" wx:if="{{item.comments.length != 0}}">
+						<block wx:for="{{item.comments}}" wx:for-item="comment" wx:key="_id">
+							<view class="comment" catchtap="commentToSomeOne" data-taskid="{{item._id}}" data-who="{{comment.commenter}}" data-name="{{comment.nickName}}">
+								<view class="comment-nickname" wx:if="{{!comment.reply}}">{{comment.nickName}}：</view>
+								<view class="comment-nickname" wx:if="{{comment.reply}}">{{comment.nickName}}回复{{comment.replyToName}}：</view>
+								<text class="comment-content">{{comment.content}}</text>
+							</view>
+						</block>
+					</view>
+				</view>
+			</view>
+		</block>
+		<!-- <view class="loading" wx:if="{{loadMore}}">正在载入更多...</view> -->
+		<view class="loadAll" wx:if="{{loadAll}}">
+			<image src="/images/nomore1.png" style="width:128rpx;height:128rpx"></image>
+		</view>
+	</view>
+	<view class="ask" wx:if="{{writeComment}}">
+		<form bindsubmit="formSubmit">
+			<textarea name='asktext' class="ask-text" placeholder="{{commentTip}}" bindblur="blurChange" auto-focus="true" fixed="true" show-confirm-bar=''></textarea>
+			<view class="button">
+				<button class="submit" formType="submit">发送</button>
+			</view>
+		</form>
+	</view>
+</view>

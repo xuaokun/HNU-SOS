@@ -1,0 +1,104 @@
+
+.title{
+  width: 750rpx;
+  height: 100rpx;
+  background-color: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.status-item{
+  font-size: small;
+  opacity: 0.5;
+  padding-bottom: 5rpx;
+}
+.active{
+  opacity: 1;
+  border-bottom: 2px solid #f00;
+}
+.task{
+  width:690rpx;
+  /* height: 150rpx; */
+  overflow: auto;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
+  position: relative;
+  padding: 30rpx;
+  background-color: #fff;
+}
+/* .task:active{
+  opacity: 0.1;
+} */
+.task-name{
+  padding-bottom: 5rpx;
+  border-bottom: 1px solid #eee;
+}
+.task-detail{
+  width: 0;
+  height: 0;
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;
+  border-bottom: 5px solid transparent;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+.detail-active{
+  border-top: 5px solid transparent;border-left: 5px solid #000;right: 12px;
+}
+.task-over{
+  position: absolute;
+  right: 20rpx;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-size: cover;
+  float: left;
+}
+.nickname{
+  color: blue;
+  font-size: small;
+}
+
+.taskinfo{
+  margin-left: 20rpx;
+  width: 650rpx;
+  float: left;
+}
+.oversend{
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  padding: 3rpx;
+  border: 1px solid #f00;
+  color: #f00;
+}
+.reward{
+  position: absolute;
+  bottom: 30rpx;
+  right: 30rpx;
+  border: 1px solid #000;
+  padding: 3rpx;
+  border-radius: 20rpx;
+}
+.img-list{
+  width: 350rpx;
+}
+.time{
+  font-size: small;
+  color: #707070;
+  margin-top: 10rpx;
+}
+.detail{
+  font-size: small;
+}

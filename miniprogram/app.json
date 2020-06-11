@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/me/me",
+    "pages/OtherTasks/OtherTasks",
+    "pages/first/first",
+    "pages/myHelp/myHelp",
+    "pages/forHelp/forHelp",
+    "pages/myForHelp/myForHelp",
+    "pages/forOtherHelp/forOtherHelp",
+    "pages/submitOneTask/submitOneTask",
+    "pages/taskDetail/taskDetail",
+    "pages/error/error"
+  ],
+  "window": {
+    "backgroundColor": "#f3f5fa",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f3f5fa",
+    "navigationBarTitleText": "海大悬赏令",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#f3f5fa",
+    "selectedColor":"#2590fe",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/home1.png",
+        "selectedIconPath": "images/home.png",
+        "text": "快递代领"
+      },
+      {
+        "pagePath": "pages/OtherTasks/OtherTasks",
+        "iconPath": "images/guangbo1.png",
+        "selectedIconPath": "images/guangbo.png",
+        "text": "SOS广场"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "images/me1.png",
+        "selectedIconPath": "images/me.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

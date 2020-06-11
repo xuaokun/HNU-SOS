@@ -1,0 +1,7 @@
+function defineIndexOf(arr,val){
+  return arr.indexOf(val);
+}
+
+module.exports = {
+  indexOf : defineIndexOf
+}

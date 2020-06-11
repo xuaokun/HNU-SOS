@@ -1,0 +1,90 @@
+page{
+  /* background-color: #eee; */
+}
+
+.task-info{
+  /* background-color: #fff; */
+  width: 750rpx;
+}
+.row{
+  width: 750rpx;
+  min-height: 30px;
+  line-height: 30px;
+  /* text-align: center; */
+  margin-top: 20rpx;
+  overflow: auto;
+}
+.title{
+  width: 200rpx;
+  float: left;
+}
+.row-content{
+  width: 500rpx;
+  min-height: 30px;
+  line-height: 30px;
+  float: left;
+  border: 1px solid deepskyblue;
+  border-radius: 10rpx;
+}
+.tip{
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10rpx;
+}
+.content-text{
+  color: #fff;
+  background-color: deepskyblue;
+}
+.textarea-row{
+  width: 750rpx;
+  height: 200px;
+  text-align: center;
+  margin-top: 20rpx;
+  /* padding-bottom: 20rpx; */
+}
+.text-area{
+  height: 200px;
+  border-radius: 5rpx;
+}
+.button{
+  width: 100%;
+  text-align: center;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.submit{
+  width: 200rpx;
+  height: 40px;
+  margin-top: 20rpx;
+  color: #fff;
+  background-color: #f00;
+}
+.submit[size]{
+  width: 200rpx;
+}
+.submit-hover{
+  opacity: 0.5;
+}
+.cancel{
+  width: 200rpx;
+  height: 40px;
+  margin-top: 20rpx;
+  opacity: 0.5;
+  background-color: #ccc;
+}
+.cancel[size]{
+  width: 200rpx;
+}
+.img{
+  margin-top: 20rpx;
+  margin-left: 50rpx;
+}
+.img-list{
+  margin-top: 20rpx;
+  float: left;
+  width: 500rpx;
+  min-height: 150rpx;
+  border: 1px solid deepskyblue;
+  overflow: visible;
+}

@@ -1,0 +1,9 @@
+<!--miniprogram/pages/sumitOneTask/submitTask.wxml-->
+<view class="container">
+  <view class="btn" bindtap="toForHelp">
+    <image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/submit1.jpg" style="width:500rpx;height:100rpx;border-radius:40rpx;"></image>
+  </view>
+  <view class="btn" bindtap="toForOtherHelp">
+      <image src="cloud://hdxys-u5fzr.6864-hdxys-u5fzr-1302164436/images/submit2.jpg" style="width:500rpx;height:100rpx;border-radius:40rpx;"></image>
+  </view>
+</view>

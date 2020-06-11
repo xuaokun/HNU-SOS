@@ -1,0 +1,13 @@
+page{
+  /* background-color: #eee; */
+}
+.container{
+  margin-top: 50rpx;
+}
+.btn{
+  margin: 20rpx;
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
